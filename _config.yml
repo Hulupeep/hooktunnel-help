@@ -1,0 +1,23 @@
+title: HookTunnel Help
+description: Documentation and guides for HookTunnel - Modern webhook debugging and testing
+baseurl: ""
+url: "https://hulupeep.github.io/hooktunnel-help"
+
+theme: minima
+
+markdown: kramdown
+highlighter: rouge
+
+navigation:
+  - title: Home
+    url: /
+  - title: Getting Started
+    url: /getting-started
+  - title: Features
+    url: /features/
+  - title: API Reference
+    url: /api/
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
