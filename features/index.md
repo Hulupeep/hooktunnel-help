@@ -20,6 +20,14 @@ Find webhooks by meaning, not just text. Use AI-powered semantic search to locat
 - Find similar requests with one click
 - Works offline in your browser
 
+### [Smart Investigations](/features/investigations/)
+Track and resolve webhook issues with AI-powered pattern matching. Build institutional knowledge about recurring problems.
+
+- Auto-link related events automatically
+- AI-suggested causes from pattern memory
+- Anomaly scoring for severity triage
+- Live event monitoring
+
 ### Webhook Capture
 Instantly create webhook endpoints for any provider. No setup required.
 

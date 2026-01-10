@@ -29,6 +29,9 @@ That's it. No account required for basic usage.
 ### [Smart Search](/features/semantic-search/)
 Find webhooks by meaning, not just text. Search for "stripe payment failed" and find relevant requests instantly.
 
+### [Smart Investigations](/features/investigations/)
+Track webhook issues with AI-powered pattern matching. Auto-link related events, get suggested causes, and build institutional knowledge.
+
 ### Webhook Capture
 Create unique URLs for Stripe, Twilio, GitHub, and any webhook provider.
 
@@ -45,6 +48,8 @@ Re-send captured webhooks to your local server with one click.
 | Event history | 24h | 30 days | 90 days |
 | Smart Search | Yes | Yes | Yes |
 | Find Similar | Yes | Yes | Yes |
+| Investigations | Yes | Yes | Yes |
+| Live Monitor | Yes | Yes | Yes |
 | Request Replay | - | Yes | Yes |
 | Payload Storage | - | Yes | Yes |
 | Team sharing | - | - | Yes |
