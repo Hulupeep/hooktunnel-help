@@ -3,21 +3,11 @@ description: Documentation and guides for HookTunnel - Modern webhook debugging 
 baseurl: ""
 url: "https://hulupeep.github.io/hooktunnel-help"
 
-theme: minima
+remote_theme: pages-themes/slate@v0.2.0
 
 markdown: kramdown
 highlighter: rouge
 
-navigation:
-  - title: Home
-    url: /
-  - title: Getting Started
-    url: /getting-started
-  - title: Features
-    url: /features/
-  - title: API Reference
-    url: /api/
-
 plugins:
+  - jekyll-remote-theme
   - jekyll-seo-tag
-  - jekyll-sitemap
