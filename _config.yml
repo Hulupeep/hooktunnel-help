@@ -3,11 +3,10 @@ description: Documentation and guides for HookTunnel - Modern webhook debugging 
 baseurl: ""
 url: "https://hulupeep.github.io/hooktunnel-help"
 
-remote_theme: pages-themes/slate@v0.2.0
+theme: jekyll-theme-slate
 
 markdown: kramdown
 highlighter: rouge
 
 plugins:
-  - jekyll-remote-theme
   - jekyll-seo-tag
