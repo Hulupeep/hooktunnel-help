@@ -2,6 +2,7 @@
 layout: default
 title: HookTunnel CLI
 description: Forward webhooks to localhost for development
+permalink: /features/cli/
 ---
 
 # HookTunnel CLI

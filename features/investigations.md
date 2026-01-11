@@ -2,6 +2,7 @@
 layout: default
 title: Smart Investigations
 description: Track and resolve webhook issues with AI-powered pattern matching and anomaly detection
+permalink: /features/investigations/
 ---
 
 # Smart Investigations
