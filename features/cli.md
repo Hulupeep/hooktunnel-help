@@ -226,6 +226,163 @@ Suggestion: Upgrade at https://hooktunnel.com/#pricing
 
 ---
 
+## Use Cases
+
+### Local Development with Live Webhooks
+
+Test your webhook handler against real provider events:
+
+```bash
+# Terminal 1: Start your local server
+npm run dev  # Listening on port 3000
+
+# Terminal 2: Connect HookTunnel
+hooktunnel connect dev 3000
+
+# Now configure Stripe/Twilio/GitHub to send webhooks to:
+# https://hooks.hooktunnel.com/h/<your-hook-id>
+```
+
+Every webhook from the provider forwards to your localhost in real-time.
+
+---
+
+### Debug Failed Webhooks
+
+Find and replay failed requests to debug issues:
+
+```bash
+# 1. Check recent logs for errors
+hooktunnel logs abc123 --limit 50
+
+# Look for 500 status codes in the output
+
+# 2. Fix your code locally
+
+# 3. Replay the failed request to test your fix
+hooktunnel replay log_xyz123 --to http://localhost:3000/webhook
+```
+
+---
+
+### AI-Assisted Debugging with Claude Code
+
+Use the CLI in Claude Code sessions for intelligent troubleshooting:
+
+**Example prompt:**
+> "Use hooktunnel to find the last 10 webhook errors and explain what's causing them"
+
+Claude Code will:
+```bash
+# Fetch recent logs
+hooktunnel logs abc123 --limit 10
+
+# Analyze the 500 errors and explain:
+# - What payload caused the failure
+# - Why your handler returned an error
+# - Suggested fixes
+```
+
+**Example prompt:**
+> "Replay the failed Stripe webhook and show me what my server returns"
+
+```bash
+# Claude runs:
+hooktunnel replay log_abc123 --to http://localhost:3000/webhook
+
+# Then explains the response and any errors
+```
+
+**Example prompt:**
+> "Monitor webhooks and alert me if any fail"
+
+```bash
+# Claude starts the tunnel in verbose mode
+hooktunnel connect dev 3000 --verbose
+
+# Watches the output and explains each request
+# Alerts you when a 4xx/5xx status appears
+```
+
+---
+
+### Team Development
+
+Multiple developers can work with the same hook:
+
+```bash
+# Developer 1 (working on payment handler)
+hooktunnel connect dev 3000
+
+# Developer 2 (reviewing logs)
+hooktunnel logs abc123
+
+# Both see the same webhook events
+```
+
+---
+
+### CI/CD Webhook Testing
+
+Validate webhook handlers in your test pipeline:
+
+```bash
+#!/bin/bash
+# ci-webhook-test.sh
+
+# Start server in background
+npm run start &
+SERVER_PID=$!
+
+# Connect tunnel
+hooktunnel connect dev 3000 &
+TUNNEL_PID=$!
+
+# Wait for connections
+sleep 5
+
+# Run your webhook tests
+npm run test:webhooks
+
+# Cleanup
+kill $SERVER_PID $TUNNEL_PID
+```
+
+---
+
+### Switching Between Environments
+
+Work with different webhook environments:
+
+```bash
+# Development
+hooktunnel connect dev 3000
+
+# Staging (different port)
+hooktunnel connect staging 3001
+
+# Production monitoring (read-only, no forwarding)
+hooktunnel logs prod-hook-id --limit 100
+```
+
+---
+
+### Debugging Signature Verification
+
+When webhooks fail signature verification:
+
+```bash
+# 1. Enable verbose mode to see full request details
+hooktunnel connect dev 3000 --verbose
+
+# 2. Check the headers being sent
+# The CLI shows all headers including signatures
+
+# 3. Compare with what your handler expects
+```
+
+---
+
 ## Configuration
 
 The CLI stores configuration in:
