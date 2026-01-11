@@ -28,6 +28,13 @@ Track and resolve webhook issues with AI-powered pattern matching. Build institu
 - Anomaly scoring for severity triage
 - Live event monitoring
 
+### [CLI Tool](/features/cli/)
+Forward webhooks to your local development server with the HookTunnel CLI.
+
+- `npx hooktunnel-cli connect dev 3000`
+- Real-time request logging in terminal
+- Works with any local server
+
 ### Webhook Capture
 Instantly create webhook endpoints for any provider. No setup required.
 

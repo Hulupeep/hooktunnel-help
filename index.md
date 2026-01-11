@@ -26,6 +26,9 @@ That's it. No account required for basic usage.
 
 ## Popular Guides
 
+### [CLI Tool](/features/cli/)
+Forward webhooks to localhost with `npx hooktunnel-cli connect dev 3000`. Real-time logging in your terminal.
+
 ### [Smart Search](/features/semantic-search/)
 Find webhooks by meaning, not just text. Search for "stripe payment failed" and find relevant requests instantly.
 
@@ -50,6 +53,7 @@ Re-send captured webhooks to your local server with one click.
 | Find Similar | Yes | Yes | Yes |
 | Investigations | Yes | Yes | Yes |
 | Live Monitor | Yes | Yes | Yes |
+| CLI Tool | Yes | Yes | Yes |
 | Request Replay | - | Yes | Yes |
 | Payload Storage | - | Yes | Yes |
 | Team sharing | - | - | Yes |
