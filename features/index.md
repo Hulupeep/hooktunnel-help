@@ -1,17 +1,31 @@
 ---
 layout: default
 title: Features
-description: Explore HookTunnel's powerful webhook debugging features
+description: Explore HookTunnel's powerful webhook debugging and reliability features
 permalink: /features/
 ---
 
 # Features
 
-HookTunnel is packed with features designed to make webhook development and debugging effortless.
+HookTunnel is packed with features designed to make webhook development, debugging, and reliability effortless.
 
 ---
 
-## Core Features
+## Core Features (All Plans)
+
+### [Webhook Inspection](/webhook-inspection/)
+Capture and inspect every webhook event from any provider. See full headers, bodies, and metadata in real time.
+
+- Unique URLs for Stripe, Twilio, GitHub, and any provider
+- Real-time event streaming
+- Full header and body inspection
+
+### [Test Your Webhook](/test-webhook/)
+Send realistic test events through the real ingress pipeline to verify your hook works end-to-end.
+
+- Provider-specific payloads (Stripe, Twilio, generic)
+- Flows through the same path as real webhooks
+- Test events are clearly marked in the dashboard
 
 ### [Smart Search](/features/semantic-search/)
 Find webhooks by meaning, not just text. Use AI-powered semantic search to locate requests by intent and discover similar patterns.
@@ -35,33 +49,69 @@ Forward webhooks to your local development server with the HookTunnel CLI.
 - Real-time request logging in terminal
 - Works with any local server
 
-### Webhook Capture
-Instantly create webhook endpoints for any provider. No setup required.
+---
 
-- Unique URLs for each hook
-- Support for Stripe, Twilio, GitHub, and more
-- Real-time event streaming
+## Pro Features
 
-### Request Replay (Pro)
-Re-send any captured webhook to your local development server.
+### [Webhook Replay](/replay/)
+Re-send any captured webhook with built-in safety guardrails.
 
-- One-click replay
-- Modify headers before replay
-- Track replay history
+- Single event and batch replay
+- Receipt-aware filtering (confirmed events excluded by default)
+- Stop-on-receipt (auto-cancel when receipt arrives)
+- Exponential backoff and rate limiting
+- Production replay safety gates
 
-### Payload Storage (Pro)
-Store and inspect full request bodies with automatic sensitive data redaction.
+### [Outcome Receipts](/outcome-receipts/)
+Prove your app applied business changes, not just that a webhook was delivered.
 
-- Full JSON payload viewing
-- Automatic PII redaction
-- Encrypted storage
+- Three receipt methods: response header, response body, async callback
+- Paid / Delivered / Applied status tracking
+- Append-only receipt ledger with audit trail
+- HMAC-SHA256 authentication
+
+### [Receipt Signing](/receipt-signing/)
+Authenticate receipt callbacks with per-hook HMAC-SHA256 signing secrets.
+
+- Per-destination signing secrets
+- Key rotation with 24-hour grace period
+- Code examples for Node.js, Python, and curl
+
+### [Stripe Reconciliation](/reconciliation/)
+Compare Stripe payments against confirmed business outcomes to find revenue gaps.
+
+- Reconciliation buckets (Confirmed, Unknown, Failed, Not Delivered)
+- Drill-down into individual gaps
+- Gap actions: Replay, Open Trace, Mark Resolved
+- Audit trail for all resolutions
+
+---
+
+## Team Features
+
+### [Shadow/Mirror Delivery](/mirror-delivery/)
+Test new endpoints alongside production without affecting live traffic.
+
+- Dual delivery to primary and shadow targets
+- Side-by-side response comparison
+- Zero risk to production traffic
+
+---
+
+## Reference
+
+### [API Reference](/api-reference/)
+Programmatic access to all HookTunnel features.
+
+- Hooks, events, replay, receipts, investigations
+- Authentication with API keys
+- Full request/response examples
 
 ---
 
 ## Quick Links
 
-- [Getting Started](/getting-started/) - Set up your first webhook
-- [API Reference](/api/) - Integrate HookTunnel programmatically
+- [Getting Started](/) - Set up your first webhook
 - [Pricing](https://hooktunnel.com/#pricing) - Compare plans
 
 ---
