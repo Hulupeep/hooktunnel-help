@@ -123,6 +123,36 @@ Features:
 
 ---
 
+## Cross-Customer Pattern Detection
+
+When an issue affects multiple teams simultaneously, HookTunnel flags it as a **Widespread Issue** — suggesting an external outage rather than a problem with your specific configuration.
+
+### How It Works
+1. When you open an investigation with a notable anomaly score (0.25+), HookTunnel checks if other teams are seeing the same pattern
+2. If 3 or more teams are affected within 24 hours, a **Widespread Issue** badge appears
+3. If a known provider is involved, a link to their status page is shown
+
+### What You See
+- **Purple "Widespread Issue" badge** in the investigation header
+- **Alert panel** showing how many other teams are affected
+- **Provider status link** (Stripe, Twilio, GitHub, etc.) when applicable
+
+### Privacy Guarantees
+- You only see aggregate counts ("5 other teams affected")
+- No other customer's data, hook IDs, or identifiers are ever exposed
+- Pattern matching uses structural fingerprints, not payload data
+
+### Supported Providers
+| Provider | Status Page |
+|----------|-------------|
+| Stripe | status.stripe.com |
+| Twilio | status.twilio.com |
+| GitHub | githubstatus.com |
+| SendGrid | status.sendgrid.com |
+| Shopify | shopifystatus.com |
+
+---
+
 ## Pattern Memory
 
 HookTunnel learns from your resolved investigations:
@@ -197,3 +227,28 @@ PATCH /api/investigations/{id}
   "resolutionType": "config_fix"
 }
 ```
+
+### Check Widespread Patterns
+```bash
+GET /api/investigations/widespread
+GET /api/investigations/widespread?hookId=abc123&patternHash=xyz
+```
+
+---
+
+## FAQ
+
+**Q: Can other customers see my investigation details?**
+No. Cross-customer detection only shares aggregate counts (e.g., "5 teams affected"). Your events, hooks, and investigation notes are never visible to anyone else.
+
+**Q: What triggers a "Widespread Issue" badge?**
+When 3 or more distinct teams have investigations with similar anomaly patterns within the last 24 hours.
+
+**Q: Does HookTunnel check provider status pages automatically?**
+Not yet — currently HookTunnel links to provider status pages for manual checking. Automated polling is planned for a future release.
+
+**Q: How accurate are AI-suggested causes?**
+Accuracy improves over time as more investigations are resolved. The confidence percentage reflects how closely the current pattern matches known patterns. Treat suggestions below 70% as hints rather than answers.
+
+**Q: How long is pattern memory retained?**
+Pattern memory is stored indefinitely and improves with each resolved investigation. Older patterns with low success rates are ranked lower.
